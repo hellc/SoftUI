@@ -10,7 +10,7 @@
 		CA249165240016AC00C7465C /* SoftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA24915B240016AC00C7465C /* SoftUI.framework */; };
 		CA24916A240016AC00C7465C /* SoftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA249169240016AC00C7465C /* SoftUITests.swift */; };
 		CA24916C240016AC00C7465C /* SoftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA24915E240016AC00C7465C /* SoftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA2491772400198400C7465C /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2491762400198400C7465C /* Temp.swift */; };
+		CA24917B24001FEB00C7465C /* UIView+SoftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,6 +21,13 @@
 			remoteGlobalIDString = CA24915A240016AC00C7465C;
 			remoteInfo = SoftUI;
 		};
+		CA2491A3240022CA00C7465C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA2491852400210F00C7465C;
+			remoteInfo = SoftUIExample;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +37,8 @@
 		CA249164240016AC00C7465C /* SoftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA249169240016AC00C7465C /* SoftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftUITests.swift; sourceTree = "<group>"; };
 		CA24916B240016AC00C7465C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA2491762400198400C7465C /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
+		CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SoftUI.swift"; sourceTree = "<group>"; };
+		CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftUIExample.xcodeproj; path = ../Example/SoftUIExample.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,7 @@
 		CA249151240016AC00C7465C = {
 			isa = PBXGroup;
 			children = (
+				CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */,
 				CA24915D240016AC00C7465C /* SoftUI */,
 				CA249168240016AC00C7465C /* SoftUITests */,
 				CA24915C240016AC00C7465C /* Products */,
@@ -92,9 +101,33 @@
 		CA249175240016CC00C7465C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CA2491762400198400C7465C /* Temp.swift */,
+				CA24917924001FC400C7465C /* Extension */,
+				CA24917824001FA800C7465C /* Controlls */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		CA24917824001FA800C7465C /* Controlls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controlls;
+			sourceTree = "<group>";
+		};
+		CA24917924001FC400C7465C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CA2491A0240022CA00C7465C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA2491A4240022CA00C7465C /* SoftUIExample.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +210,12 @@
 			mainGroup = CA249151240016AC00C7465C;
 			productRefGroup = CA24915C240016AC00C7465C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CA2491A0240022CA00C7465C /* Products */;
+					ProjectRef = CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CA24915A240016AC00C7465C /* SoftUI */,
@@ -184,6 +223,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CA2491A4240022CA00C7465C /* SoftUIExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SoftUIExample.app;
+			remoteRef = CA2491A3240022CA00C7465C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CA249159240016AC00C7465C /* Resources */ = {
@@ -207,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA2491772400198400C7465C /* Temp.swift in Sources */,
+				CA24917B24001FEB00C7465C /* UIView+SoftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
