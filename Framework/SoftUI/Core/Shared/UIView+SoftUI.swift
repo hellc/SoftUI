@@ -15,6 +15,7 @@ public extension UIView {
     var soft_cornerRadius: CGFloat {
         set (radius) {
             self.layer.soft_cornerRadius = radius
+            self.clipsToBounds = true
         }
         get {
             return self.layer.soft_cornerRadius
@@ -22,12 +23,12 @@ public extension UIView {
     }
 
     @IBInspectable
-    var soft_shadowRadius: CGFloat {
-        set (radius) {
-            self.layer.soft_shadowRadius = radius
+    var soft_shadowDistance: CGFloat {
+        set (distance) {
+            self.layer.soft_shadowDistance = distance
         }
         get {
-            return self.layer.soft_shadowRadius
+            return self.layer.soft_shadowDistance ?? 0
         }
     }
 
@@ -38,6 +39,34 @@ public extension UIView {
         }
         get {
             return self.layer.soft_cornerType.rawValue
+        }
+    }
+
+    @IBInspectable
+    var soft_outerLightShadowColor: UIColor {
+        set (color) {
+            self.layer.soft_outerLightShadowColor = color.cgColor
+        }
+        get {
+            if let cgColor = self.layer.soft_outerLightShadowColor {
+                return UIColor(cgColor: cgColor)
+            } else {
+                return .clear
+            }
+        }
+    }
+
+    @IBInspectable
+    var soft_outerDarkShadowColor: UIColor {
+        set (color) {
+            self.layer.soft_outerDarkShadowColor = color.cgColor
+        }
+        get {
+            if let cgColor = self.layer.soft_outerDarkShadowColor {
+                return UIColor(cgColor: cgColor)
+            } else {
+                return .clear
+            }
         }
     }
 }

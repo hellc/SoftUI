@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yS-Pv-oe9">
-                                <rect key="frame" x="87" y="64" width="240" height="50"/>
+                                <rect key="frame" x="87" y="244" width="240" height="50"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Mdr-H5-VpX"/>
@@ -27,16 +27,22 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="soft_cornerRadius">
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="soft_cornerType" value="bottom"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="soft_shadowRadius">
-                                        <real key="value" value="10"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="soft_cornerType" value="top"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="soft_shadowDistance">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="soft_outerLightShadowColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="soft_outerDarkShadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="9yS-Pv-oe9" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="20" id="b7y-B6-vcF"/>
+                            <constraint firstItem="9yS-Pv-oe9" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="200" id="b7y-B6-vcF"/>
                             <constraint firstItem="9yS-Pv-oe9" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="m2G-5g-KRM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>

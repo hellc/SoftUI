@@ -8,6 +8,12 @@
 
 import Foundation
 
+public enum ShadowType {
+    case none
+    case light
+    case dark
+}
+
 public enum LightSource {
     case none
     case topLeft
