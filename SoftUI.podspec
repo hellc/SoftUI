@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name                   = 'SoftUI'
   s.version                = '0.0.1'
-  s.summary                = 'Neumorphism design pattern implementation for macOS/iOS/watchOS'
+  s.summary                = 'Neumorphism design pattern implementation for macOS/iOS/watchOS/tvOS'
   s.homepage               = 'https://github.com/hellc/SoftUI'
   s.license                = 'MIT'
   s.author                 = { 'Ivan Manov' => 'ivanmanov@live.com' }
