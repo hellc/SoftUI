@@ -11,6 +11,8 @@
 		CA24916A240016AC00C7465C /* SoftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA249169240016AC00C7465C /* SoftUITests.swift */; };
 		CA24916C240016AC00C7465C /* SoftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA24915E240016AC00C7465C /* SoftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA24917B24001FEB00C7465C /* UIView+SoftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */; };
+		CA2491AE24002A6F00C7465C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2491AD24002A6F00C7465C /* Enums.swift */; };
+		CA2491B024002B9700C7465C /* CALayer+SoftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2491AF24002B9700C7465C /* CALayer+SoftUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,8 @@
 		CA24916B240016AC00C7465C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SoftUI.swift"; sourceTree = "<group>"; };
 		CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftUIExample.xcodeproj; path = ../Example/SoftUIExample.xcodeproj; sourceTree = "<group>"; };
+		CA2491AD24002A6F00C7465C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		CA2491AF24002B9700C7465C /* CALayer+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+SoftUI.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,25 +105,29 @@
 		CA249175240016CC00C7465C /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CA24917924001FC400C7465C /* Extension */,
-				CA24917824001FA800C7465C /* Controlls */,
+				CA24917924001FC400C7465C /* Shared */,
+				CA24917824001FA800C7465C /* Custom Elements */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		CA24917824001FA800C7465C /* Controlls */ = {
+		CA24917824001FA800C7465C /* Custom Elements */ = {
 			isa = PBXGroup;
 			children = (
+				CA2491B22400342600C7465C /* Views */,
+				CA2491AC240029EF00C7465C /* Buttons */,
 			);
-			path = Controlls;
+			path = "Custom Elements";
 			sourceTree = "<group>";
 		};
-		CA24917924001FC400C7465C /* Extension */ = {
+		CA24917924001FC400C7465C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CA2491AD24002A6F00C7465C /* Enums.swift */,
+				CA2491AF24002B9700C7465C /* CALayer+SoftUI.swift */,
 				CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */,
 			);
-			path = Extension;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		CA2491A0240022CA00C7465C /* Products */ = {
@@ -128,6 +136,20 @@
 				CA2491A4240022CA00C7465C /* SoftUIExample.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CA2491AC240029EF00C7465C /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CA2491B22400342600C7465C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +174,7 @@
 				CA249157240016AC00C7465C /* Sources */,
 				CA249158240016AC00C7465C /* Frameworks */,
 				CA249159240016AC00C7465C /* Resources */,
+				CA2491B12400316700C7465C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -251,12 +274,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CA2491B12400316700C7465C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect --path \"$SRCROOT\"/SoftUI\nswiftlint --path \"$SRCROOT\"/SoftUI\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CA249157240016AC00C7465C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CA24917B24001FEB00C7465C /* UIView+SoftUI.swift in Sources */,
+				CA2491B024002B9700C7465C /* CALayer+SoftUI.swift in Sources */,
+				CA2491AE24002A6F00C7465C /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
