@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 public enum ShadowType {
     case none
@@ -35,8 +36,7 @@ public enum LightSource: String {
     }
 }
 
-public enum ShapeType {
-    case none
+public enum ShapeType: String {
     case flat
     case concave
     case convex

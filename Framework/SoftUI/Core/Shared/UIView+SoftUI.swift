@@ -21,6 +21,16 @@ public extension UIView {
     }
 
     @IBInspectable
+    var intensity: CGFloat {
+        set (intensity) {
+            self.layer.soft_intensity = intensity
+        }
+        get {
+            return self.layer.soft_intensity
+        }
+    }
+
+    @IBInspectable
     var cornerRadius: CGFloat {
         set (radius) {
             self.layer.soft_cornerRadius = radius
@@ -61,6 +71,16 @@ public extension UIView {
     }
 
     @IBInspectable
+    var shapeType: String {
+        set (type) {
+            self.layer.soft_shapeType = ShapeType(rawValue: type) ?? .flat
+        }
+        get {
+            return self.layer.soft_shapeType.rawValue
+        }
+    }
+
+    @IBInspectable
     var lightSource: String {
         set (type) {
             self.layer.soft_lightSource = LightSource(rawValue: type) ?? .none
@@ -73,10 +93,10 @@ public extension UIView {
     @IBInspectable
     var lightColor: UIColor {
         set (color) {
-            self.layer.soft_outerLightShadowColor = color.cgColor
+            self.layer.soft_lightColor = color.cgColor
         }
         get {
-            if let cgColor = self.layer.soft_outerLightShadowColor {
+            if let cgColor = self.layer.soft_lightColor {
                 return UIColor(cgColor: cgColor)
             } else {
                 return .clear
@@ -87,10 +107,10 @@ public extension UIView {
     @IBInspectable
     var darkColor: UIColor {
         set (color) {
-            self.layer.soft_outerDarkShadowColor = color.cgColor
+            self.layer.soft_darkColor = color.cgColor
         }
         get {
-            if let cgColor = self.layer.soft_outerDarkShadowColor {
+            if let cgColor = self.layer.soft_darkColor {
                 return UIColor(cgColor: cgColor)
             } else {
                 return .clear

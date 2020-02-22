@@ -33,25 +33,25 @@ internal extension CALayer {
         }
     }
 
-    private static var _soft_outerLightShadowColor = Holder<CGColor>()
-    var soft_outerLightShadowColor: CGColor? {
+    private static var _soft_lightColor = Holder<CGColor>()
+    var soft_lightColor: CGColor? {
         set (value) {
-            CALayer._soft_outerLightShadowColor[self.hash] = value
+            CALayer._soft_lightColor[self.hash] = value
             self.soft_update()
         }
         get {
-            return CALayer._soft_outerLightShadowColor[self.hash]
+            return CALayer._soft_lightColor[self.hash]
         }
     }
 
-    private static var _soft_outerDarkShadowColor = Holder<CGColor>()
-    var soft_outerDarkShadowColor: CGColor? {
+    private static var _soft_darkColor = Holder<CGColor>()
+    var soft_darkColor: CGColor? {
         set (value) {
-            CALayer._soft_outerDarkShadowColor[self.hash] = value
+            CALayer._soft_darkColor[self.hash] = value
             self.soft_update()
         }
         get {
-            return CALayer._soft_outerDarkShadowColor[self.hash]
+            return CALayer._soft_darkColor[self.hash]
         }
     }
 
@@ -70,6 +70,17 @@ internal extension CALayer {
             self.backgroundColor = nil
 
             return CALayer._soft_mainColor[self.hash]
+        }
+    }
+
+    private static var _soft_intensity = Holder<CGFloat>()
+    var soft_intensity: CGFloat {
+        set (value) {
+            CALayer._soft_intensity[self.hash] = value
+            self.soft_update()
+        }
+        get {
+            return CALayer._soft_intensity[self.hash] ?? 0.5
         }
     }
 
@@ -103,6 +114,17 @@ internal extension CALayer {
         }
         get {
             return CALayer._soft_shadowDistance[self.hash]
+        }
+    }
+
+    private static var _soft_shapeType = Holder<ShapeType>()
+    var soft_shapeType: ShapeType {
+        set (type) {
+            CALayer._soft_shapeType[self.hash] = type
+            self.soft_update()
+        }
+        get {
+            return CALayer._soft_shapeType[self.hash] ?? .flat
         }
     }
 
@@ -151,6 +173,7 @@ internal extension CALayer {
         return layer
     }
 
+    // swiftlint:disable function_body_length
     private func soft_update() {
         if !self.soft_useSoftUI { return }
 
@@ -165,14 +188,15 @@ internal extension CALayer {
         self.insertSublayer(mainColorLayer, at: 0)
 
         // Shadow
-        let lightColor = self.soft_outerLightShadowColor
-        let darkColor = self.soft_outerDarkShadowColor
-        if let shadowDistance = self.soft_shadowDistance, shadowDistance > 0 {
+        let lightColor = self.soft_lightColor
+        let darkColor = self.soft_darkColor
+        if let shadowDistance = self.soft_shadowDistance, shadowDistance > 0, self.soft_shapeType != .pressed {
             if lightColor != nil {
                 let shadowLayer = self.soft_shadowLayer()
 
                 shadowLayer.soft_updateShadow(of: .light,
                 distance: shadowDistance,
+                intensity: self.soft_intensity,
                 lightSource: self.soft_lightSource,
                 color: lightColor)
 
@@ -184,6 +208,7 @@ internal extension CALayer {
 
                 shadowLayer.soft_updateShadow(of: .dark,
                 distance: shadowDistance,
+                intensity: self.soft_intensity,
                 lightSource: self.soft_lightSource,
                 color: darkColor)
 
@@ -192,10 +217,10 @@ internal extension CALayer {
         }
 
         if lightColor != nil, darkColor != nil {
-
+            // Border
             if self.soft_borderWidth > 0 {
                 let border = self.soft_gradient(for: self.soft_lightSource,
-                                                colors: [lightColor!, lightColor!, darkColor!, darkColor!])
+                                                colors: [lightColor!, lightColor!, lightColor!, darkColor!])
 
                 let shape = CAShapeLayer()
                 shape.lineWidth = self.soft_borderWidth
@@ -207,17 +232,69 @@ internal extension CALayer {
                 mainColorLayer.insertSublayer(border, at: 0)
                 mainColorLayer.masksToBounds = true
             }
+
+            // Shape
+            switch self.soft_shapeType {
+            case .concave, .convex, .pressed:
+                mainColorLayer.updateShape(for: self.soft_lightSource,
+                                           with: self.soft_shapeType,
+                                           lightColor: lightColor!,
+                                           darkColor: darkColor!)
+            default: break
+            }
         }
+    }
+
+    private func updateShape(for lightSource: LightSource,
+                             with type: ShapeType,
+                             lightColor: CGColor,
+                             darkColor: CGColor) {
+        let lightColor = lightColor.copy(alpha: 0.1)!
+        let darkColor = darkColor.copy(alpha: 0.1)!
+
+        var colors: [CGColor] = []
+        var locations: [NSNumber] = []
+        var gradientType: CAGradientLayerType = .axial
+
+        let gradient = CAGradientLayer()
+        gradient.startPoint = lightSource.startEndPoints.0
+        gradient.endPoint = lightSource.startEndPoints.1
+
+        switch type {
+        case .concave:
+            colors = [darkColor, lightColor]
+            locations = [0, 1]
+            gradientType = .axial
+        case .convex:
+            colors = [lightColor, darkColor]
+            locations = [0, 1]
+            gradientType = .axial
+        case .pressed:
+            colors = [darkColor, lightColor]
+            locations = [0, 1]
+            gradientType = .radial
+        default: break
+        }
+
+        gradient.type = gradientType
+        gradient.frame = self.bounds
+        gradient.colors = colors
+
+        gradient.locations = locations
+
+        self.insertSublayer(gradient, at: 0)
+        self.masksToBounds = true
     }
 }
 
 extension CALayer {
     fileprivate func soft_gradient(for type: LightSource,
                                    colors: [CGColor],
-                                   locations: [NSNumber] = [0, 0.45, 0.55, 1]) -> CALayer {
+                                   gradientType: CAGradientLayerType = .axial,
+                                   locations: [NSNumber] = [0, 0.5, 0.5, 1]) -> CALayer {
         let gradient = CAGradientLayer()
 
-        gradient.type = .axial
+        gradient.type = gradientType
         gradient.frame = self.bounds
         gradient.colors = colors
 
