@@ -12,6 +12,17 @@ typealias Holder<T> = [Int: T]
 
 // swiftlint:disable identifier_name
 internal extension CALayer {
+    private static var _soft_useSoftUI = Holder<Bool>()
+    var soft_useSoftUI: Bool {
+        set (value) {
+            CALayer._soft_useSoftUI[self.hash] = value
+            self.soft_update()
+        }
+        get {
+            return CALayer._soft_useSoftUI[self.hash] ?? false
+        }
+    }
+
     private static var _soft_tag = Holder<Int>()
     var soft_tag: Int {
         set (value) {
@@ -141,6 +152,8 @@ internal extension CALayer {
     }
 
     private func soft_update() {
+        if !self.soft_useSoftUI { return }
+
         self.sublayers?.removeAll(where: { $0.soft_tag > 0 })
 
         // Main layer

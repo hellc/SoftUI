@@ -39,6 +39,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="distance">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useSoftUI" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

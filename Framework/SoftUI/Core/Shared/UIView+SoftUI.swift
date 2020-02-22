@@ -11,6 +11,16 @@ import UIKit
 @IBDesignable
 public extension UIView {
     @IBInspectable
+    var useSoftUI: Bool {
+        set (value) {
+            self.layer.soft_useSoftUI = value
+        }
+        get {
+            return self.layer.soft_useSoftUI
+        }
+    }
+
+    @IBInspectable
     var cornerRadius: CGFloat {
         set (radius) {
             self.layer.soft_cornerRadius = radius
