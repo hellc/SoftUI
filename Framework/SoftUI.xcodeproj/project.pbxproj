@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA17645824014EF500770162 /* SoftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17645724014EF500770162 /* SoftButton.swift */; };
+		CA17645B2401597600770162 /* SoftUI.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CA17645A2401597600770162 /* SoftUI.podspec */; };
 		CA249165240016AC00C7465C /* SoftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA24915B240016AC00C7465C /* SoftUI.framework */; };
 		CA24916A240016AC00C7465C /* SoftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA249169240016AC00C7465C /* SoftUITests.swift */; };
 		CA24916C240016AC00C7465C /* SoftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA24915E240016AC00C7465C /* SoftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,17 +25,11 @@
 			remoteGlobalIDString = CA24915A240016AC00C7465C;
 			remoteInfo = SoftUI;
 		};
-		CA2491A3240022CA00C7465C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA2491852400210F00C7465C;
-			remoteInfo = SoftUIExample;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CA17645724014EF500770162 /* SoftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButton.swift; sourceTree = "<group>"; };
+		CA17645A2401597600770162 /* SoftUI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SoftUI.podspec; path = ../SoftUI.podspec; sourceTree = "<group>"; };
 		CA24915B240016AC00C7465C /* SoftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA24915E240016AC00C7465C /* SoftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoftUI.h; sourceTree = "<group>"; };
 		CA24915F240016AC00C7465C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,7 +37,6 @@
 		CA249169240016AC00C7465C /* SoftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftUITests.swift; sourceTree = "<group>"; };
 		CA24916B240016AC00C7465C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SoftUI.swift"; sourceTree = "<group>"; };
-		CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoftUIExample.xcodeproj; path = ../Example/SoftUIExample.xcodeproj; sourceTree = "<group>"; };
 		CA2491AD24002A6F00C7465C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		CA2491AF24002B9700C7465C /* CALayer+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+SoftUI.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +63,7 @@
 		CA249151240016AC00C7465C = {
 			isa = PBXGroup;
 			children = (
-				CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */,
+				CA17645A2401597600770162 /* SoftUI.podspec */,
 				CA24915D240016AC00C7465C /* SoftUI */,
 				CA249168240016AC00C7465C /* SoftUITests */,
 				CA24915C240016AC00C7465C /* Products */,
@@ -89,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				CA249175240016CC00C7465C /* Core */,
+				CA24917824001FA800C7465C /* Controls */,
 				CA24915E240016AC00C7465C /* SoftUI.h */,
 				CA24915F240016AC00C7465C /* Info.plist */,
 			);
@@ -108,18 +103,17 @@
 			isa = PBXGroup;
 			children = (
 				CA24917924001FC400C7465C /* Shared */,
-				CA24917824001FA800C7465C /* Custom Elements */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		CA24917824001FA800C7465C /* Custom Elements */ = {
+		CA24917824001FA800C7465C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
 				CA2491B22400342600C7465C /* Views */,
 				CA2491AC240029EF00C7465C /* Buttons */,
 			);
-			path = "Custom Elements";
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		CA24917924001FC400C7465C /* Shared */ = {
@@ -130,14 +124,6 @@
 				CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		CA2491A0240022CA00C7465C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CA2491A4240022CA00C7465C /* SoftUIExample.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CA2491AC240029EF00C7465C /* Buttons */ = {
@@ -236,12 +222,6 @@
 			mainGroup = CA249151240016AC00C7465C;
 			productRefGroup = CA24915C240016AC00C7465C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CA2491A0240022CA00C7465C /* Products */;
-					ProjectRef = CA24919F240022CA00C7465C /* SoftUIExample.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CA24915A240016AC00C7465C /* SoftUI */,
@@ -250,21 +230,12 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		CA2491A4240022CA00C7465C /* SoftUIExample.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SoftUIExample.app;
-			remoteRef = CA2491A3240022CA00C7465C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		CA249159240016AC00C7465C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA17645B2401597600770162 /* SoftUI.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +437,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hellc.SoftUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -494,7 +465,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hellc.SoftUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

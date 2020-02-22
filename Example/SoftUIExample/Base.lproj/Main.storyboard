@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsd-2F-eux" customClass="SoftButton" customModule="SoftUI">
-                                <rect key="frame" x="67" y="64" width="280" height="44"/>
+                                <rect key="frame" x="67" y="426" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.93299859760000003" green="0.90980017189999995" blue="0.90980416539999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1M1-v5-qQR"/>
@@ -25,7 +25,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="SoftUI">
                                     <color key="titleColor" red="0.29430991410000001" green="0.29784300920000001" blue="0.30588394400000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <state key="disabled">
@@ -36,13 +36,14 @@
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="lightColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="darkColor">
-                                        <color key="value" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="distance">
                                         <real key="value" value="10"/>
@@ -62,7 +63,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92913556100000005" green="0.90979808569999998" blue="0.90980428459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="bsd-2F-eux" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="20" id="ZBs-UE-JCo"/>
+                            <constraint firstItem="bsd-2F-eux" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="q38-FO-A8Q"/>
                             <constraint firstItem="bsd-2F-eux" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="s6m-9D-Q4B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>

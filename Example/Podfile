@@ -1,0 +1,7 @@
+use_frameworks!
+inhibit_all_warnings!
+
+target 'SoftUIExample' do
+  platform :ios, '11.0'
+  pod 'SoftUI', :path => '../'
+end

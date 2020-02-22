@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                   = 'SoftUI'
-  s.version                = '0.0.1'
+  s.version                = '0.0.2'
   s.summary                = 'Neumorphism design pattern implementation for macOS/iOS/watchOS/tvOS'
   s.homepage               = 'https://github.com/hellc/SoftUI'
   s.license                = 'MIT'
@@ -15,10 +15,19 @@ Pod::Spec.new do |s|
 
   s.source                 = { :git => 'https://github.com/hellc/SoftUI.git', :tag => s.version }
 
-  s.default_subspec        = 'Core'
+  s.default_subspec        = 'All'
   
-  s.subspec 'Core' do |c|
-    c.source_files         = 'Framework/SoftUI/Core/**/*.swift'
+  s.subspec 'All' do |all|
+    all.dependency         'SoftUI/Core'
+    all.dependency         'SoftUI/Buttons'
+  end
+  
+  s.subspec 'Core' do |core|
+    core.source_files      = 'Framework/SoftUI/Core/**/*.swift'
+  end
+  
+  s.subspec 'Buttons' do |buttons|
+    buttons.source_files   = 'Framework/SoftUI/Controls/Buttons/*.swift'
   end
   
 end

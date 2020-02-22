@@ -1,0 +1,22 @@
+PODS:
+  - SoftUI (0.0.2):
+    - SoftUI/All (= 0.0.2)
+  - SoftUI/All (0.0.2):
+    - SoftUI/Buttons
+    - SoftUI/Core
+  - SoftUI/Buttons (0.0.2)
+  - SoftUI/Core (0.0.2)
+
+DEPENDENCIES:
+  - SoftUI (from `../`)
+
+EXTERNAL SOURCES:
+  SoftUI:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SoftUI: 15c5adf844deea06920f3002ab0e0fe285a900a2
+
+PODFILE CHECKSUM: 209aeb38f7c70eee9d5767baa436cc8caa13acab
+
+COCOAPODS: 1.8.4

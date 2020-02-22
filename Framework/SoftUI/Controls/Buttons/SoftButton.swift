@@ -22,7 +22,7 @@ class SoftButton: UIButton {
         case .normal:
             self.layer.soft_shapeType = .flat
         case .highlighted:
-            self.layer.soft_shapeType = .concave
+            self.layer.soft_shapeType = .pressed
         case .focused:
             self.layer.soft_shapeType = .concave
         case .selected:
