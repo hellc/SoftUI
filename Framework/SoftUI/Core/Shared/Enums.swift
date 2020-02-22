@@ -14,7 +14,7 @@ public enum ShadowType {
     case dark
 }
 
-public enum LightSource {
+public enum LightSource: String {
     case none
     case topLeft
     case topRight

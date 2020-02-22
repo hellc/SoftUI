@@ -12,6 +12,16 @@ typealias Holder<T> = [Int: T]
 
 // swiftlint:disable identifier_name
 public extension CALayer {
+    private static var _soft_tag = Holder<Int>()
+    var soft_tag: Int {
+        set (value) {
+            CALayer._soft_tag[self.hash] = value
+        }
+        get {
+            return CALayer._soft_tag[self.hash] ?? -1
+        }
+    }
+
     private static var _soft_outerLightShadowColor = Holder<CGColor>()
     var soft_outerLightShadowColor: CGColor? {
         set (value) {
@@ -34,45 +44,45 @@ public extension CALayer {
         }
     }
 
-    private static var _soft_outerLightShadowLayer = Holder<CALayer>()
-    var soft_outerLightShadowLayer: CALayer? {
-        set (layer) {
-            CALayer._soft_outerLightShadowLayer[self.hash] = layer
-        }
-        get {
-            return CALayer._soft_outerLightShadowLayer[self.hash]
-        }
-    }
-
-    private static var _soft_outerDarkShadowLayer = Holder<CALayer>()
-    var soft_outerDarkShadowLayer: CALayer? {
-        set (layer) {
-            CALayer._soft_outerDarkShadowLayer[self.hash] = layer
-        }
-        get {
-            return CALayer._soft_outerDarkShadowLayer[self.hash]
-        }
-    }
-
-    private static var _soft_innerShadowLayer = Holder<CALayer>()
-    var soft_innerShadowLayer: CALayer? {
-        set (layer) {
-            CALayer._soft_innerShadowLayer[self.hash] = layer
-        }
-        get {
-            return CALayer._soft_innerShadowLayer[self.hash]
-        }
-    }
-
-    private static var _soft_mainColorLayer = Holder<CALayer>()
-    var soft_mainColorLayer: CALayer? {
-        set (layer) {
-            CALayer._soft_mainColorLayer[self.hash] = layer
-        }
-        get {
-            return CALayer._soft_mainColorLayer[self.hash]
-        }
-    }
+//    private static var _soft_outerLightShadowLayer = Holder<CALayer>()
+//    var soft_outerLightShadowLayer: CALayer? {
+//        set (layer) {
+//            CALayer._soft_outerLightShadowLayer[self.hash] = layer
+//        }
+//        get {
+//            return CALayer._soft_outerLightShadowLayer[self.hash]
+//        }
+//    }
+//
+//    private static var _soft_outerDarkShadowLayer = Holder<CALayer>()
+//    var soft_outerDarkShadowLayer: CALayer? {
+//        set (layer) {
+//            CALayer._soft_outerDarkShadowLayer[self.hash] = layer
+//        }
+//        get {
+//            return CALayer._soft_outerDarkShadowLayer[self.hash]
+//        }
+//    }
+//
+//    private static var _soft_innerShadowLayer = Holder<CALayer>()
+//    var soft_innerShadowLayer: CALayer? {
+//        set (layer) {
+//            CALayer._soft_innerShadowLayer[self.hash] = layer
+//        }
+//        get {
+//            return CALayer._soft_innerShadowLayer[self.hash]
+//        }
+//    }
+//
+//    private static var _soft_mainColorLayer = Holder<CALayer>()
+//    var soft_mainColorLayer: CALayer? {
+//        set (layer) {
+//            CALayer._soft_mainColorLayer[self.hash] = layer
+//        }
+//        get {
+//            return CALayer._soft_mainColorLayer[self.hash]
+//        }
+//    }
 
     private static var _soft_mainColor = Holder<CGColor>()
     var soft_mainColor: CGColor? {
@@ -114,6 +124,17 @@ public extension CALayer {
         }
     }
 
+    private static var _soft_lightSource = Holder<LightSource>()
+    var soft_lightSource: LightSource {
+        set (type) {
+            CALayer._soft_lightSource[self.hash] = type
+            self.soft_update()
+        }
+        get {
+            return CALayer._soft_lightSource[self.hash] ?? .none
+        }
+    }
+
     private static var _soft_cornerType = Holder<CornerType>()
     var soft_cornerType: CornerType {
         set (type) {
@@ -125,68 +146,77 @@ public extension CALayer {
         }
     }
 
-    private func prepareSublayers() {
-        if self.soft_outerDarkShadowLayer == nil {
-            self.soft_outerDarkShadowLayer = CALayer()
-            self.soft_outerDarkShadowLayer?.backgroundColor = UIColor.black.cgColor
-            self.soft_outerDarkShadowLayer?.frame = self.bounds
-            self.insertSublayer(self.soft_outerDarkShadowLayer!, at: 0)
-        }
+    private func soft_colorLayer() -> CALayer {
+        let layer = CALayer()
 
-        if self.soft_outerLightShadowLayer == nil {
-            self.soft_outerLightShadowLayer = CALayer()
-            self.soft_outerLightShadowLayer?.backgroundColor = UIColor.black.cgColor
-            self.soft_outerLightShadowLayer?.frame = self.bounds
-            self.insertSublayer(self.soft_outerLightShadowLayer!, at: 1)
-        }
+        layer.soft_tag = 1
+        layer.frame = self.bounds
 
-        if self.soft_mainColorLayer == nil {
-            self.soft_mainColorLayer = CALayer()
-            self.soft_mainColorLayer?.frame = self.bounds
-            self.insertSublayer(self.soft_mainColorLayer!, at: 2)
-        }
+        return layer
+    }
+
+    private func soft_shadowLayer() -> CALayer {
+        let layer =  CALayer(layer: self)
+
+        layer.soft_tag = 2
+        layer.masksToBounds = false
+        layer.backgroundColor = UIColor.black.cgColor
+        layer.frame = self.bounds
+
+        layer.soft_updateCorners(with: self.soft_cornerType,
+                                 and: self.soft_cornerRadius)
+
+        return layer
     }
 
     private func soft_update() {
-        self.prepareSublayers()
+        self.sublayers?.removeAll(where: { $0.soft_tag > 0 })
 
         // Main layer
-        guard let mainColorLayer = self.soft_mainColorLayer else { return }
+        let mainColorLayer = self.soft_colorLayer()
         mainColorLayer.soft_updateCorners(with: self.soft_cornerType,
                                           and: self.soft_cornerRadius)
         mainColorLayer.backgroundColor = self.soft_mainColor
         self.backgroundColor = UIColor.clear.cgColor
-
-        guard let outerLightShadowLayer = self.soft_outerLightShadowLayer else { return }
-        outerLightShadowLayer.soft_updateCorners(with: self.soft_cornerType,
-                                                 and: self.soft_cornerRadius)
-
-        guard let outerDarkShadowLayer = self.soft_outerDarkShadowLayer else { return }
-        outerDarkShadowLayer.soft_updateCorners(with: self.soft_cornerType,
-                                                 and: self.soft_cornerRadius)
+        self.insertSublayer(mainColorLayer, at: 0)
 
         // Shadow
         if let shadowDistance = self.soft_shadowDistance, shadowDistance > 0 {
-            outerLightShadowLayer.soft_updateShadow(with: .light,
-                                                    distance: shadowDistance,
-                                                    lightSource: .topLeft,
-                                                    color: self.soft_outerLightShadowColor)
-            outerDarkShadowLayer.soft_updateShadow(with: .dark,
-                                                    distance: shadowDistance,
-                                                    lightSource: .topLeft,
-                                                    color: self.soft_outerDarkShadowColor)
+            if let lightColor = self.soft_outerLightShadowColor {
+                let shadowLayer = self.soft_shadowLayer()
+
+                shadowLayer.soft_updateShadow(of: .light,
+                distance: shadowDistance,
+                lightSource: self.soft_lightSource,
+                color: lightColor)
+
+                self.insertSublayer(shadowLayer, below: mainColorLayer)
+            }
+
+            if let darkColor = self.soft_outerDarkShadowColor {
+                let shadowLayer = self.soft_shadowLayer()
+
+                shadowLayer.soft_updateShadow(of: .dark,
+                distance: shadowDistance,
+                lightSource: self.soft_lightSource,
+                color: darkColor)
+
+                self.insertSublayer(shadowLayer, below: mainColorLayer)
+            }
         }
     }
 }
 
 extension CALayer {
-    fileprivate func soft_updateShadow(with type: ShadowType,
+    fileprivate func soft_updateShadow(of type: ShadowType,
                                        distance: CGFloat = 5,
+                                       intensity: CGFloat = 1,
+                                       blur: CGFloat = 1,
                                        lightSource: LightSource = .topLeft,
                                        color: CGColor?) {
         self.shadowColor = color
-        self.shadowOpacity = 1.0
-        self.shadowRadius = distance
+        self.shadowOpacity = Float(intensity)
+        self.shadowRadius = distance * blur
 
         var offset = CGSize(width: distance, height: distance)
 
@@ -194,6 +224,15 @@ extension CALayer {
         case .topLeft:
             offset = CGSize(width: type == .light ? -distance : distance,
                             height: type == .light ? -distance : distance)
+        case .topRight:
+            offset = CGSize(width: type == .light ? distance : -distance,
+                            height: type == .light ? -distance : distance)
+        case .bottomLeft:
+            offset = CGSize(width: type == .dark ? distance : -distance,
+                        height: type == .dark ? -distance : distance)
+        case .bottomRight:
+            offset = CGSize(width: type == .dark ? -distance : distance,
+                        height: type == .dark ? -distance : distance)
         default: break
         }
 
@@ -202,26 +241,23 @@ extension CALayer {
 }
 
 extension CALayer {
-    private func soft_round(_ corners: UIRectCorner, with radius: CGFloat) {
-        self.masksToBounds = false
-        let path = UIBezierPath(roundedRect: self.bounds,
-                                byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: radius, height: radius))
-         let mask = CAShapeLayer()
-         mask.path = path.cgPath
-         self.mask = mask
-     }
-
     fileprivate func soft_updateCorners(with type: CornerType, and radius: CGFloat) {
         if type == .none { return }
 
+        self.cornerRadius = radius
+
         switch type {
         case .all:
-            self.soft_round([.allCorners], with: radius)
+            self.maskedCorners = [.layerMaxXMaxYCorner,
+                                  .layerMaxXMinYCorner,
+                                  .layerMinXMaxYCorner,
+                                  .layerMinXMinYCorner]
         case .bottom:
-            self.soft_round([.bottomLeft, .bottomRight], with: radius)
+            self.maskedCorners = [.layerMaxXMaxYCorner,
+                                  .layerMinXMaxYCorner]
         case .top:
-            self.soft_round([.topLeft, .topRight], with: radius)
+            self.maskedCorners = [.layerMaxXMinYCorner,
+                                  .layerMinXMinYCorner]
         default: break
         }
     }

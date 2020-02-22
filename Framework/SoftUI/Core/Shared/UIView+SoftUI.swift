@@ -15,7 +15,6 @@ public extension UIView {
     var soft_cornerRadius: CGFloat {
         set (radius) {
             self.layer.soft_cornerRadius = radius
-            self.clipsToBounds = true
         }
         get {
             return self.layer.soft_cornerRadius
@@ -39,6 +38,16 @@ public extension UIView {
         }
         get {
             return self.layer.soft_cornerType.rawValue
+        }
+    }
+
+    @IBInspectable
+    var soft_lightSource: String {
+        set (type) {
+            self.layer.soft_lightSource = LightSource(rawValue: type) ?? .none
+        }
+        get {
+            return self.layer.soft_lightSource.rawValue
         }
     }
 
