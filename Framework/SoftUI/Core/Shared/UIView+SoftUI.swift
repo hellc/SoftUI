@@ -8,11 +8,10 @@
 
 import UIKit
 
-// swiftlint:disable identifier_name
 @IBDesignable
 public extension UIView {
     @IBInspectable
-    var soft_cornerRadius: CGFloat {
+    var cornerRadius: CGFloat {
         set (radius) {
             self.layer.soft_cornerRadius = radius
         }
@@ -22,7 +21,17 @@ public extension UIView {
     }
 
     @IBInspectable
-    var soft_shadowDistance: CGFloat {
+    var borderWidth: CGFloat {
+        set (width) {
+            self.layer.soft_borderWidth = width
+        }
+        get {
+            return self.layer.soft_borderWidth
+        }
+    }
+
+    @IBInspectable
+    var distance: CGFloat {
         set (distance) {
             self.layer.soft_shadowDistance = distance
         }
@@ -32,7 +41,7 @@ public extension UIView {
     }
 
     @IBInspectable
-    var soft_cornerType: String {
+    var cornerType: String {
         set (type) {
             self.layer.soft_cornerType = CornerType(rawValue: type) ?? .none
         }
@@ -42,7 +51,7 @@ public extension UIView {
     }
 
     @IBInspectable
-    var soft_lightSource: String {
+    var lightSource: String {
         set (type) {
             self.layer.soft_lightSource = LightSource(rawValue: type) ?? .none
         }
@@ -52,7 +61,7 @@ public extension UIView {
     }
 
     @IBInspectable
-    var soft_outerLightShadowColor: UIColor {
+    var lightColor: UIColor {
         set (color) {
             self.layer.soft_outerLightShadowColor = color.cgColor
         }
@@ -66,7 +75,7 @@ public extension UIView {
     }
 
     @IBInspectable
-    var soft_outerDarkShadowColor: UIColor {
+    var darkColor: UIColor {
         set (color) {
             self.layer.soft_outerDarkShadowColor = color.cgColor
         }

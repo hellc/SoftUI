@@ -20,6 +20,19 @@ public enum LightSource: String {
     case topRight
     case bottomLeft
     case bottomRight
+
+    var startEndPoints: (CGPoint, CGPoint) {
+        switch self {
+        case .topLeft, .none:
+            return (CGPoint(x: 0, y: 0), CGPoint(x: 1, y: 1))
+        case .topRight:
+            return (CGPoint(x: 1, y: 0), CGPoint(x: 0, y: 1))
+        case .bottomLeft:
+            return (CGPoint(x: 1, y: 1), CGPoint(x: 1, y: 0))
+        case .bottomRight:
+            return (CGPoint(x: 1, y: 1), CGPoint(x: 0, y: 0))
+        }
+    }
 }
 
 public enum ShapeType {
