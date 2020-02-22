@@ -6,8 +6,7 @@
 //  Copyright © 2020 hellc. All rights reserved.
 //
 
-import Foundation
-import CoreGraphics
+import UIKit
 
 public enum ShadowType {
     case none
