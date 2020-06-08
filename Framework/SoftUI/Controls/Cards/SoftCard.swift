@@ -19,7 +19,7 @@ public class SoftCard: UIView {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+
     // MARK: Init methods
 
     override init(frame: CGRect) {
@@ -42,12 +42,12 @@ public class SoftCard: UIView {
             self.view = view
         }
     }
-    
+
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         self.updateUI()
     }
-    
+
     // MARK: Public methods
 
     public func update(with items: [UIView]) {
@@ -56,7 +56,7 @@ public class SoftCard: UIView {
 
         self.updateUI()
     }
-    
+
     // MARK: Private methods
 
     private func updateUI() {

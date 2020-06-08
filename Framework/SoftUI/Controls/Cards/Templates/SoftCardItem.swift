@@ -70,6 +70,7 @@ public class SoftCardItem: UIView {
         self.descLabel?.text = model.description
         self.descLabel?.isHidden = model.description == nil
         self.actionButton?.setTitle(model.actionTitle, for: .normal)
+        self.actionButton?.isHidden = model.actionTitle == nil
     }
 
     // MARK: UIActions

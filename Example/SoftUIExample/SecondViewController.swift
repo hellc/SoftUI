@@ -19,10 +19,10 @@ class SecondViewController: UIViewController {
         model.image = UIImage(named: "image_doc")
         model.title = "Title"
         model.description = "Description"
-        model.actionTitle = "Action"
-        model.actionHandler = { sender in
-            // TODO: Handle action
-        }
+//        model.actionTitle = "Action"
+//        model.actionHandler = { sender in
+//            // TODO: Handle action
+//        }
 
         let softCardItem = SoftCardItem(frame: self.softCard.bounds)
         softCardItem.configure(with: model)
