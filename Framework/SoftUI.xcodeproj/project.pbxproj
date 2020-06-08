@@ -15,6 +15,10 @@
 		CA24917B24001FEB00C7465C /* UIView+SoftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */; };
 		CA2491AE24002A6F00C7465C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2491AD24002A6F00C7465C /* Enums.swift */; };
 		CA2491B024002B9700C7465C /* CALayer+SoftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2491AF24002B9700C7465C /* CALayer+SoftUI.swift */; };
+		CA57D0DC248A42D200D6D1B5 /* SoftCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57D0DB248A42D200D6D1B5 /* SoftCard.swift */; };
+		CA57D0DE248A431F00D6D1B5 /* SoftCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA57D0DD248A431F00D6D1B5 /* SoftCard.xib */; };
+		CA57D0E7248A738500D6D1B5 /* SoftCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57D0E5248A738500D6D1B5 /* SoftCardItem.swift */; };
+		CA57D0E8248A738500D6D1B5 /* SoftCardItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA57D0E6248A738500D6D1B5 /* SoftCardItem.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		CA17645724014EF500770162 /* SoftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftButton.swift; sourceTree = "<group>"; };
-		CA17645A2401597600770162 /* SoftUI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SoftUI.podspec; path = ../SoftUI.podspec; sourceTree = "<group>"; };
+		CA17645A2401597600770162 /* SoftUI.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SoftUI.podspec; path = ../SoftUI.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CA24915B240016AC00C7465C /* SoftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SoftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA24915E240016AC00C7465C /* SoftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SoftUI.h; sourceTree = "<group>"; };
 		CA24915F240016AC00C7465C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +43,10 @@
 		CA24917A24001FEB00C7465C /* UIView+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SoftUI.swift"; sourceTree = "<group>"; };
 		CA2491AD24002A6F00C7465C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		CA2491AF24002B9700C7465C /* CALayer+SoftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+SoftUI.swift"; sourceTree = "<group>"; };
+		CA57D0DB248A42D200D6D1B5 /* SoftCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftCard.swift; sourceTree = "<group>"; };
+		CA57D0DD248A431F00D6D1B5 /* SoftCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoftCard.xib; sourceTree = "<group>"; };
+		CA57D0E5248A738500D6D1B5 /* SoftCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftCardItem.swift; sourceTree = "<group>"; };
+		CA57D0E6248A738500D6D1B5 /* SoftCardItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoftCardItem.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +126,7 @@
 		CA24917824001FA800C7465C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				CA2491B22400342600C7465C /* Views */,
+				CA57D0DA248A422A00D6D1B5 /* Cards */,
 				CA2491AC240029EF00C7465C /* Buttons */,
 			);
 			path = Controls;
@@ -142,11 +150,24 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		CA2491B22400342600C7465C /* Views */ = {
+		CA57D0DA248A422A00D6D1B5 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				CA57D0E4248A736600D6D1B5 /* Items */,
+				CA57D0DB248A42D200D6D1B5 /* SoftCard.swift */,
+				CA57D0DD248A431F00D6D1B5 /* SoftCard.xib */,
 			);
-			path = Views;
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		CA57D0E4248A736600D6D1B5 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				CA57D0E5248A738500D6D1B5 /* SoftCardItem.swift */,
+				CA57D0E6248A738500D6D1B5 /* SoftCardItem.xib */,
+			);
+			name = Items;
+			path = Templates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +264,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA57D0E8248A738500D6D1B5 /* SoftCardItem.xib in Resources */,
 				CA17645B2401597600770162 /* SoftUI.podspec in Resources */,
+				CA57D0DE248A431F00D6D1B5 /* SoftCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +307,8 @@
 				CA24917B24001FEB00C7465C /* UIView+SoftUI.swift in Sources */,
 				CA2491B024002B9700C7465C /* CALayer+SoftUI.swift in Sources */,
 				CA2491AE24002A6F00C7465C /* Enums.swift in Sources */,
+				CA57D0DC248A42D200D6D1B5 /* SoftCard.swift in Sources */,
+				CA57D0E7248A738500D6D1B5 /* SoftCardItem.swift in Sources */,
 				CA17645824014EF500770162 /* SoftButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

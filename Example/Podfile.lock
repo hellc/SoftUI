@@ -1,11 +1,15 @@
 PODS:
-  - SoftUI (0.0.2):
-    - SoftUI/All (= 0.0.2)
-  - SoftUI/All (0.0.2):
+  - SoftUI (0.0.4):
+    - SoftUI/All (= 0.0.4)
+  - SoftUI/All (0.0.4):
     - SoftUI/Buttons
+    - SoftUI/Cards
     - SoftUI/Core
-  - SoftUI/Buttons (0.0.2)
-  - SoftUI/Core (0.0.2)
+  - SoftUI/Buttons (0.0.4):
+    - SoftUI/Core
+  - SoftUI/Cards (0.0.4):
+    - SoftUI/Core
+  - SoftUI/Core (0.0.4)
 
 DEPENDENCIES:
   - SoftUI (from `../`)
@@ -15,8 +19,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SoftUI: 15c5adf844deea06920f3002ab0e0fe285a900a2
+  SoftUI: c47c1e008734e8a89f4326ce4d0a43ed5e0e2f68
 
 PODFILE CHECKSUM: 209aeb38f7c70eee9d5767baa436cc8caa13acab
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

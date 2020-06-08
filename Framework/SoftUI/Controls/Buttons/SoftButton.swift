@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SoftButton: UIButton {
-    override var state: UIControl.State {
+public class SoftButton: UIButton {
+    public override var state: UIControl.State {
         let state = super.state
         self.updateShape(for: state)
 
