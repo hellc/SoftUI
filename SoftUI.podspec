@@ -11,7 +11,6 @@ Pod::Spec.new do |s|
 
   s.requires_arc           = false
   s.ios.deployment_target  = '11.0'
-  s.tvos.deployment_target = '11.0'
   
   s.resources = "Framework/SoftUI/**/*.xib"
   s.resource_bundles = {
