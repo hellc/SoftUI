@@ -29,40 +29,40 @@
                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="pageControl" destination="tEc-0p-Shp" id="J1V-Sk-r7S"/>
-                <outlet property="scrollView" destination="tV1-Fp-za6" id="15a-Jn-ay2"/>
+                <outlet property="pageControl" destination="o0L-Wx-SQW" id="4iG-M1-uAT"/>
+                <outlet property="scrollView" destination="cfe-NM-yK0" id="gka-3d-6Xf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="SLm-Ad-Ozf">
             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV1-Fp-za6">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfe-NM-yK0">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="Y6K-wE-kp4"/>
+                        <outlet property="delegate" destination="-1" id="6Wd-Dn-MXI"/>
                     </connections>
                 </scrollView>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tEc-0p-Shp">
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="o0L-Wx-SQW">
                     <rect key="frame" x="130.5" y="263" width="39" height="37"/>
-                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="currentPageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </pageControl>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="tV1-Fp-za6" secondAttribute="bottom" id="FSb-m4-wsU"/>
-                <constraint firstItem="tV1-Fp-za6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I3g-MG-BeZ"/>
-                <constraint firstItem="tV1-Fp-za6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lad-Mr-u3g"/>
-                <constraint firstItem="MGl-aQ-rbD" firstAttribute="bottom" secondItem="tEc-0p-Shp" secondAttribute="bottom" id="fF9-Bv-FD9"/>
-                <constraint firstItem="tEc-0p-Shp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gsI-cX-soL"/>
-                <constraint firstAttribute="trailing" secondItem="tV1-Fp-za6" secondAttribute="trailing" id="mBh-ux-H7D"/>
+                <constraint firstItem="o0L-Wx-SQW" firstAttribute="centerX" secondItem="SLm-Ad-Ozf" secondAttribute="centerX" id="03H-Mx-8kp"/>
+                <constraint firstItem="cfe-NM-yK0" firstAttribute="leading" secondItem="SLm-Ad-Ozf" secondAttribute="leading" id="0oL-kX-eSO"/>
+                <constraint firstItem="FAS-h3-Suk" firstAttribute="bottom" secondItem="o0L-Wx-SQW" secondAttribute="bottom" id="2Is-eB-BW6"/>
+                <constraint firstAttribute="bottom" secondItem="cfe-NM-yK0" secondAttribute="bottom" id="6d1-Z7-nDa"/>
+                <constraint firstItem="cfe-NM-yK0" firstAttribute="top" secondItem="SLm-Ad-Ozf" secondAttribute="top" id="6dY-h2-XId"/>
+                <constraint firstAttribute="trailing" secondItem="cfe-NM-yK0" secondAttribute="trailing" id="kdQ-fh-sbc"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="MGl-aQ-rbD"/>
+            <viewLayoutGuide key="safeArea" id="FAS-h3-Suk"/>
             <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
         </view>
     </objects>

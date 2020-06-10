@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.swift_versions         = '5.0'
   s.name                   = 'SoftUI'
-  s.version                = '0.0.4'
+  s.version                = '0.0.5'
   s.summary                = 'Neumorphism design pattern implementation for macOS/iOS/watchOS/tvOS'
   s.homepage               = 'https://github.com/hellc/SoftUI'
   s.license                = 'MIT'
